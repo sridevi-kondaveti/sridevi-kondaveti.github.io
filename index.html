@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sridevi K | Principal Project Manager · Scrum Master · Social Media Strategist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy:#0b1f3a; --navy2:#112847; --navy3:#0d2a55; --gold:#e9a825; --gold2:#f5c842; --gold-pale:rgba(233,168,37,0.12); --white:#ffffff; --offwhite:#f7f9fc; --border:#e2e8f0; --text:#1e293b; --muted:#64748b; --card-shadow:0 4px 24px rgba(11,31,58,0.09); --card-hover:0 12px 40px rgba(11,31,58,0.15); }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',sans-serif; color:var(--text); background:var(--white); line-height:1.65; overflow-x:hidden; }
+    ::-webkit-scrollbar { width:6px; } ::-webkit-scrollbar-track { background:var(--navy); } ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:3px; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+    @keyframes float { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-8px)} }
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease,transform 0.65s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:rgba(11,31,58,0.96); backdrop-filter:blur(12px); display:flex; align-items:center; justify-content:space-between; padding:0 6%; height:66px; border-bottom:1px solid rgba(233,168,37,0.25); transition:all 0.3s; }
+    .nav-brand { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--gold); text-decoration:none; }
+    .nav-brand span { color:var(--white); font-style:italic; }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.8rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; transition:color 0.2s; position:relative; padding-bottom:4px; }
+    .nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--gold); transition:width 0.3s; }
+    .nav-links a:hover { color:var(--gold); } .nav-links a:hover::after { width:100%; }
+    .nav-cta { background:var(--gold)!important; color:var(--navy)!important; padding:8px 18px!important; border-radius:6px!important; font-weight:700!important; } .nav-cta::after{display:none!important;}
+    #hero { min-height:100vh; background:linear-gradient(135deg,#060e1c 0%,var(--navy) 45%,#0f2d52 80%,#133060 100%); display:flex; align-items:center; padding:100px 6% 70px; position:relative; overflow:hidden; }
+    .hero-bg-circles { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .hero-bg-circles span { position:absolute; border-radius:50%; border:1px solid rgba(233,168,37,0.08); }
+    .hero-bg-circles span:nth-child(1){width:500px;height:500px;top:-100px;right:-100px;animation:float 7s ease-in-out infinite;}
+    .hero-bg-circles span:nth-child(2){width:300px;height:300px;bottom:50px;left:-80px;animation:float 9s ease-in-out infinite reverse;}
+    .hero-bg-circles span:nth-child(3){width:180px;height:180px;top:40%;right:20%;animation:float 6s ease-in-out infinite 2s;background:rgba(233,168,37,0.03);}
+    .hero-grid { display:grid; grid-template-columns:1fr auto; gap:4rem; align-items:center; width:100%; max-width:1100px; }
+    .hero-left { animation:fadeUp 0.9s ease both; } .hero-right { animation:fadeIn 1.2s ease both 0.4s; }
+    .hero-eyebrow { display:inline-flex; align-items:center; gap:8px; background:rgba(233,168,37,0.12); border:1px solid rgba(233,168,37,0.35); color:var(--gold); font-size:0.72rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; padding:7px 16px; border-radius:30px; margin-bottom:1.6rem; }
+    .hero-eyebrow::before { content:''; width:6px; height:6px; background:var(--gold); border-radius:50%; animation:pulse 2s infinite; }
+    .hero-name { font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,5rem); color:var(--white); line-height:1.08; margin-bottom:0.6rem; font-weight:800; }
+    .hero-name .highlight { color:var(--gold); font-style:italic; }
+    .hero-roles { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.6rem; }
+    .role-badge { font-size:0.8rem; font-weight:600; padding:5px 14px; border-radius:20px; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.85); background:rgba(255,255,255,0.06); }
+    .role-badge.gold { border-color:rgba(233,168,37,0.5); color:var(--gold); background:rgba(233,168,37,0.1); }
+    .hero-summary { font-size:1.02rem; color:rgba(255,255,255,0.65); max-width:600px; line-height:1.85; margin-bottom:2.4rem; }
+    .hero-summary strong { color:rgba(255,255,255,0.9); font-weight:600; }
+    .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:3rem; }
+    .btn-gold { background:var(--gold); color:var(--navy); padding:14px 30px; border-radius:8px; font-weight:800; font-size:0.88rem; text-decoration:none; transition:all 0.25s; display:inline-flex; align-items:center; gap:6px; box-shadow:0 4px 20px rgba(233,168,37,0.35); }
+    .btn-gold:hover { background:var(--gold2); transform:translateY(-2px); }
+    .btn-outline { border:1.5px solid rgba(255,255,255,0.3); color:var(--white); padding:14px 30px; border-radius:8px; font-weight:600; font-size:0.88rem; text-decoration:none; transition:all 0.25s; display:inline-flex; align-items:center; gap:6px; }
+    .btn-outline:hover { border-color:var(--gold); color:var(--gold); background:rgba(233,168,37,0.08); }
+    .hero-stats { display:flex; gap:2.5rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+    .hero-stat-num { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:800; color:var(--gold); line-height:1; }
+    .hero-stat-label { font-size:0.72rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; margin-top:4px; }
+    .hero-avatar-card { background:linear-gradient(145deg,var(--navy2),#0e2d56); border:2px solid rgba(233,168,37,0.3); border-radius:20px; padding:2rem 1.8rem; text-align:center; min-width:220px; box-shadow:0 20px 60px rgba(0,0,0,0.4); animation:float 6s ease-in-out infinite; }
+    .avatar-circle { width:110px; height:110px; border-radius:50%; background:linear-gradient(135deg,var(--navy3),#1a4070); border:3px solid var(--gold); display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; font-family:'Playfair Display',serif; font-size:2.8rem; color:var(--gold); font-weight:700; }
+    .avatar-name { font-weight:700; color:var(--white); font-size:1rem; margin-bottom:4px; }
+    .avatar-title { font-size:0.72rem; color:var(--gold); font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1.2rem; }
+    .avatar-tags { display:flex; flex-direction:column; gap:6px; }
+    .avatar-tag { font-size:0.73rem; padding:5px 10px; border-radius:5px; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); border:1px solid rgba(255,255,255,0.1); }
+    .avatar-tag.active { background:rgba(233,168,37,0.12); color:var(--gold); border-color:rgba(233,168,37,0.3); }
+    section { padding:90px 6%; }
+    .section-tag { font-size:0.72rem; font-weight:800; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
+    h2.section-title { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,3vw,2.6rem); color:var(--navy); margin-bottom:0.8rem; font-weight:800; }
+    .section-bar { width:52px; height:4px; background:linear-gradient(90deg,var(--gold),var(--gold2)); border-radius:2px; margin-bottom:3rem; }
+    .section-subtitle { font-size:1rem; color:var(--muted); max-width:580px; line-height:1.8; margin-bottom:3rem; }
+    #about { background:var(--offwhite); }
+    .about-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; align-items:start; }
+    .about-card { background:var(--white); border-radius:16px; padding:2rem; border:1px solid var(--border); box-shadow:var(--card-shadow); margin-bottom:1.5rem; }
+    .about-initials { width:100px; height:100px; border-radius:50%; background:linear-gradient(135deg,var(--navy),var(--navy3)); border:3px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--gold); font-weight:700; margin-bottom:1.2rem; }
+    .about-name-big { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:800; color:var(--navy); margin-bottom:4px; }
+    .about-title-sm { font-size:0.82rem; color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1rem; }
+    .about-meta { display:flex; flex-direction:column; gap:0.6rem; }
+    .meta-row { display:flex; align-items:center; gap:0.7rem; font-size:0.84rem; color:var(--muted); }
+    .meta-icon { font-size:1rem; width:18px; text-align:center; }
+    .meta-row a { color:var(--navy); text-decoration:none; font-weight:500; } .meta-row a:hover { color:var(--gold); }
+    .about-right p { font-size:1rem; color:#374151; line-height:1.9; margin-bottom:1.2rem; }
+    .about-right p strong { color:var(--navy); font-weight:700; }
+    .about-highlights { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem; }
+    .highlight-chip { display:flex; align-items:flex-start; gap:0.7rem; background:var(--white); border:1px solid var(--border); border-left:4px solid var(--gold); border-radius:8px; padding:0.9rem 1rem; }
+    .chip-icon { font-size:1.3rem; margin-top:1px; } .chip-label { font-size:0.82rem; font-weight:700; color:var(--navy); margin-bottom:2px; } .chip-val { font-size:0.78rem; color:var(--muted); }
+    #experience { background:var(--white); }
+    .timeline { position:relative; padding-left:2.5rem; }
+    .timeline::before { content:''; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--gold),transparent); }
+    .tl-item { position:relative; margin-bottom:2.5rem; }
+    .tl-dot { position:absolute; left:-2.5rem; top:1.3rem; width:22px; height:22px; border-radius:50%; background:var(--navy); border:3px solid var(--gold); box-shadow:0 0 12px rgba(233,168,37,0.4); z-index:1; }
+    .tl-dot.active { background:var(--gold); box-shadow:0 0 18px rgba(233,168,37,0.6); }
+    .tl-card { background:var(--offwhite); border:1px solid var(--border); border-left:4px solid var(--gold); border-radius:12px; padding:1.6rem 1.8rem; transition:box-shadow 0.25s,transform 0.25s; }
+    .tl-card:hover { box-shadow:var(--card-hover); transform:translateX(4px); }
+    .tl-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.4rem; }
+    .tl-role { font-size:1.05rem; font-weight:800; color:var(--navy); }
+    .tl-period { font-size:0.75rem; font-weight:700; padding:4px 12px; border-radius:20px; background:rgba(233,168,37,0.12); color:var(--gold); border:1px solid rgba(233,168,37,0.3); white-space:nowrap; }
+    .tl-period.current { background:rgba(34,197,94,0.1); color:#16a34a; border-color:rgba(34,197,94,0.3); }
+    .tl-company { font-size:0.86rem; color:var(--muted); font-weight:600; margin-bottom:0.1rem; }
+    .tl-location { font-size:0.76rem; color:var(--gold); margin-bottom:1rem; font-weight:500; }
+    .tl-bullets { padding-left:1.1rem; } .tl-bullets li { font-size:0.88rem; color:#4b5563; line-height:1.75; margin-bottom:0.35rem; } .tl-bullets li::marker { color:var(--gold); }
+    .tl-tag-row { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.9rem; }
+    .tl-tag { font-size:0.72rem; padding:3px 10px; border-radius:4px; background:rgba(11,31,58,0.06); color:var(--navy); border:1px solid rgba(11,31,58,0.1); font-weight:600; }
+    #projects { background:var(--navy); } #projects .section-tag{color:var(--gold2);} #projects h2.section-title{color:var(--white);} #projects .section-subtitle{color:rgba(255,255,255,0.55);}
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:1.8rem; }
+    .proj-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:2rem; transition:all 0.3s; position:relative; overflow:hidden; }
+    .proj-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--gold),var(--gold2)); }
+    .proj-card:hover { background:rgba(255,255,255,0.07); border-color:rgba(233,168,37,0.3); transform:translateY(-5px); box-shadow:0 20px 50px rgba(0,0,0,0.4); }
+    .proj-label { font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; color:var(--gold); margin-bottom:0.8rem; }
+    .proj-title { font-family:'Playfair Display',serif; font-size:1.25rem; color:var(--white); font-weight:700; margin-bottom:0.7rem; line-height:1.3; }
+    .proj-period { font-size:0.75rem; color:rgba(255,255,255,0.4); margin-bottom:1rem; }
+    .proj-desc { font-size:0.88rem; color:rgba(255,255,255,0.65); line-height:1.75; margin-bottom:1.2rem; }
+    .proj-metrics { display:flex; flex-wrap:wrap; gap:0.6rem; margin-bottom:1.3rem; }
+    .metric-chip { font-size:0.78rem; font-weight:700; padding:5px 12px; border-radius:20px; background:rgba(233,168,37,0.1); color:var(--gold); border:1px solid rgba(233,168,37,0.25); }
+    .proj-tech { display:flex; flex-wrap:wrap; gap:0.4rem; }
+    .tech-tag { font-size:0.72rem; padding:3px 9px; border-radius:4px; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); border:1px solid rgba(255,255,255,0.1); }
+    .proj-link { display:inline-flex; align-items:center; gap:5px; margin-top:1rem; font-size:0.8rem; font-weight:700; color:var(--gold); text-decoration:none; border:1px solid rgba(233,168,37,0.3); padding:5px 14px; border-radius:5px; transition:all 0.2s; }
+    .proj-link:hover { background:rgba(233,168,37,0.1); transform:translateX(3px); }
+    #skills { background:var(--offwhite); }
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.4rem; }
+    .skill-group { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:1.6rem; transition:all 0.25s; box-shadow:var(--card-shadow); }
+    .skill-group:hover { box-shadow:var(--card-hover); transform:translateY(-3px); border-color:rgba(233,168,37,0.4); }
+    .skill-group-icon { font-size:2rem; margin-bottom:0.7rem; } .skill-group-name { font-size:0.85rem; font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1rem; }
+    .skill-pill-row { display:flex; flex-wrap:wrap; gap:0.4rem; }
+    .skill-pill { font-size:0.78rem; padding:4px 11px; border-radius:20px; background:rgba(11,31,58,0.06); color:var(--navy); border:1px solid rgba(11,31,58,0.1); font-weight:500; transition:all 0.2s; }
+    .skill-pill:hover { background:var(--gold-pale); border-color:rgba(233,168,37,0.4); }
+    #achievements { background:var(--white); }
+    .ach-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
+    .ach-card { background:linear-gradient(135deg,var(--navy),var(--navy2)); border-radius:16px; padding:2rem; position:relative; overflow:hidden; transition:transform 0.25s,box-shadow 0.25s; }
+    .ach-card::after { content:''; position:absolute; top:-30px; right:-30px; width:120px; height:120px; border-radius:50%; background:rgba(233,168,37,0.06); }
+    .ach-card:hover { transform:translateY(-4px); box-shadow:0 16px 45px rgba(11,31,58,0.3); }
+    .ach-icon { font-size:2.2rem; margin-bottom:1rem; } .ach-title { font-size:1.1rem; font-weight:800; color:var(--gold); margin-bottom:0.5rem; } .ach-desc { font-size:0.88rem; color:rgba(255,255,255,0.7); line-height:1.7; }
+    .lang-row { display:flex; flex-wrap:wrap; gap:1rem; margin-top:1.5rem; }
+    .lang-card { display:flex; align-items:center; gap:0.8rem; background:var(--offwhite); border:1px solid var(--border); border-radius:10px; padding:0.8rem 1.4rem; transition:border-color 0.2s; }
+    .lang-card:hover { border-color:var(--gold); } .lang-flag { font-size:1.4rem; } .lang-name { font-weight:700; font-size:0.9rem; color:var(--navy); } .lang-level { font-size:0.75rem; color:var(--muted); }
+    #contact { background:linear-gradient(135deg,#060e1c 0%,var(--navy) 50%,#0f2d52 100%); text-align:center; position:relative; overflow:hidden; }
+    #contact::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e9a825' fill-opacity='0.03'%3E%3Cpath d='M40 0l40 40-40 40L0 40z'/%3E%3C/g%3E%3C/svg%3E"); }
+    #contact .section-tag{color:rgba(233,168,37,0.8);position:relative;} #contact h2.section-title{color:var(--white);position:relative;} #contact .section-bar{margin:0 auto 1rem;} #contact .section-subtitle{color:rgba(255,255,255,0.55);margin:0 auto 2.5rem;position:relative;}
+    .contact-links { display:flex; justify-content:center; flex-wrap:wrap; gap:1rem; margin-bottom:2.5rem; position:relative; }
+    .contact-btn { display:inline-flex; align-items:center; gap:0.6rem; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.85); text-decoration:none; padding:0.9rem 1.6rem; border-radius:10px; font-size:0.88rem; font-weight:600; transition:all 0.25s; }
+    .contact-btn:hover { background:rgba(233,168,37,0.12); border-color:rgba(233,168,37,0.5); color:var(--gold); transform:translateY(-2px); }
+    footer { background:#050b14; text-align:center; padding:1.5rem; color:rgba(255,255,255,0.25); font-size:0.8rem; }
+    footer strong { color:var(--gold); font-weight:600; }
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}.hero-right{display:none;}.about-grid{grid-template-columns:1fr;}.nav-links{gap:1rem;}}
+    @media(max-width:640px){.nav-links{display:none;}section{padding:60px 5%;}.timeline{padding-left:1.5rem;}.tl-dot{left:-1.5rem;}.about-highlights{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="#hero" class="nav-brand">Sridevi <span>K.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="#achievements">Achievements</a></li><li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg-circles"><span></span><span></span><span></span></div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">10+ Years · Fintech · India · Malaysia · Singapore</div>
+      <h1 class="hero-name">Sridevi <span class="highlight">K.</span></h1>
+      <div class="hero-roles">
+        <span class="role-badge gold">Principal Project Manager</span><span class="role-badge gold">Scrum Master</span><span class="role-badge">Social Media Strategist</span><span class="role-badge">AI Workflow Architect</span>
+      </div>
+      <p class="hero-summary">Results-driven leader with <strong>10+ years</strong> delivering high-impact fintech products — Personal Loans, Home Loans, Credit Cards, Mutual Funds &amp; Insurance — across <strong>India, Malaysia &amp; Singapore</strong>. Currently pioneering <strong>AI-powered automation</strong> with n8n &amp; Claude AI at BankBazaar.</p>
+      <div class="hero-actions"><a href="#contact" class="btn-gold">✉ Get in Touch</a><a href="#experience" class="btn-outline">▼ View My Journey</a></div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-num">10+</div><div class="hero-stat-label">Years Experience</div></div>
+        <div><div class="hero-stat-num">6+</div><div class="hero-stat-label">Products Launched</div></div>
+        <div><div class="hero-stat-num">3</div><div class="hero-stat-label">Countries Delivered</div></div>
+        <div><div class="hero-stat-num">3x</div><div class="hero-stat-label">Posting Frequency</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-avatar-card">
+        <div class="avatar-circle">SK</div>
+        <div class="avatar-name">Sridevi K</div>
+        <div class="avatar-title">Principal PM · BankBazaar</div>
+        <div class="avatar-tags">
+          <div class="avatar-tag active">🚀 Agile / Scrum Master</div><div class="avatar-tag active">🤖 AI Automation Expert</div><div class="avatar-tag">📱 Social Media Strategy</div><div class="avatar-tag">🌏 International Delivery</div><div class="avatar-tag">📍 Chennai, India</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-tag reveal">01 · About Me</div>
+  <h2 class="section-title reveal">The Person Behind the Projects</h2>
+  <div class="section-bar reveal"></div>
+  <div class="about-grid">
+    <div class="about-left reveal">
+      <div class="about-card">
+        <div class="about-initials">SK</div>
+        <div class="about-name-big">Sridevi K</div>
+        <div class="about-title-sm">Principal PM · Scrum Master · Social Media Strategist</div>
+        <div class="about-meta">
+          <div class="meta-row"><span class="meta-icon">📍</span> Chennai, India</div>
+          <div class="meta-row"><span class="meta-icon">🏢</span> BankBazaar.com (A&amp;A Dukaan Financial Services)</div>
+          <div class="meta-row"><span class="meta-icon">✉</span> <a href="mailto:sridevi.kondaveti049@gmail.com">sridevi.kondaveti049@gmail.com</a></div>
+          <div class="meta-row"><span class="meta-icon">📞</span> <a href="tel:+918190900617">+91 81909 00617</a></div>
+          <div class="meta-row"><span class="meta-icon">💼</span> <a href="https://linkedin.com/in/sridevi-kondaveti-1925753b4" target="_blank">linkedin.com/in/sridevi-kondaveti</a></div>
+          <div class="meta-row"><span class="meta-icon">🎓</span> B.E. Electronics &amp; Communication · JNTU</div>
+        </div>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-chip"><div class="chip-icon">🌏</div><div><div class="chip-label">International Reach</div><div class="chip-val">India · Malaysia · Singapore</div></div></div>
+        <div class="highlight-chip"><div class="chip-icon">🤖</div><div><div class="chip-label">AI Automation</div><div class="chip-val">n8n · Claude AI</div></div></div>
+        <div class="highlight-chip"><div class="chip-icon">🏆</div><div><div class="chip-label">Award Winner</div><div class="chip-val">BankBazaar Excellence Award</div></div></div>
+        <div class="highlight-chip"><div class="chip-icon">🛠</div><div><div class="chip-label">Builder Mindset</div><div class="chip-val">Shipped PM Dashboard independently</div></div></div>
+      </div>
+    </div>
+    <div class="about-right reveal" style="transition-delay:0.15s">
+      <p>Hello! I'm <strong>Sridevi K</strong>, a seasoned <strong>Principal Project Manager and Scrum Master</strong> based in Chennai with over a decade of experience shaping the fintech landscape at <strong>BankBazaar.com</strong> — one of India's leading financial marketplace platforms.</p>
+      <p>Over my career, I've led agile teams to successfully launch a diverse portfolio of financial products — <strong>Personal Loans, Home Loans, Car Loans, Credit Cards, Mutual Funds, and Insurance</strong> — not just in India, but across <strong>Malaysia and Singapore</strong>.</p>
+      <p>What sets me apart is my drive to go beyond traditional PM boundaries. I independently conceptualised, built, and deployed a <strong>live full-stack PM Dashboard</strong> (React + Supabase + Cloudflare) used daily by my team — proving that modern PMs can and should be builders.</p>
+      <p>In addition to project delivery, I wear the hat of <strong>Social Media Strategist</strong> — spearheading AI-powered content automation pipelines that tripled posting frequency and boosted audience engagement by <strong>~40%</strong> using <strong>n8n and Claude AI</strong>.</p>
+      <p>I believe in continuous learning, leading with empathy, and using technology to work smarter. Whether it's a sprint retrospective, a content calendar, or an AI workflow — I bring the same focus and energy to everything I do.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-tag reveal">02 · Work Experience</div>
+  <h2 class="section-title reveal">Career Journey</h2>
+  <div class="section-bar reveal"></div>
+  <p class="section-subtitle reveal">15+ years of progressive growth — from telecom engineer to fintech product leader and AI automation pioneer.</p>
+  <div class="timeline">
+    <div class="tl-item reveal"><div class="tl-dot active"></div><div class="tl-card">
+      <div class="tl-header"><div class="tl-role">Social Media Strategist <span style="font-size:0.75rem;font-weight:500;color:var(--muted);">(Additional Responsibility)</span></div><div class="tl-period current">Oct 2025 – Present</div></div>
+      <div class="tl-company">BankBazaar.com · A&amp;A Dukaan Financial Services Pvt. Ltd.</div><div class="tl-location">📍 Chennai, India</div>
+      <ul class="tl-bullets">
+        <li>Designed and executed a social media strategy across <strong>Instagram, Facebook, LinkedIn, and Twitter/X</strong> to improve brand visibility and audience engagement.</li>
+        <li>Developed monthly content calendars covering themes, campaigns, and key messaging for consistent, timely brand communication.</li>
+        <li>Automated content scheduling and posting workflows using <strong>n8n and Claude AI</strong>, reducing manual effort and improving cross-platform consistency.</li>
+        <li>Improved overall posting frequency by <strong>3x</strong> and audience engagement by <strong>~40%</strong> through consistent AI-assisted content output.</li>
+        <li>Built automated performance monitoring in n8n — pulling platform analytics and delivering weekly insight summaries via Slack.</li>
+      </ul>
+      <div class="tl-tag-row"><span class="tl-tag">n8n Automation</span><span class="tl-tag">Claude AI</span><span class="tl-tag">Content Strategy</span><span class="tl-tag">Instagram</span><span class="tl-tag">LinkedIn</span><span class="tl-tag">Analytics</span></div>
+    </div></div>
+    <div class="tl-item reveal"><div class="tl-dot active"></div><div class="tl-card">
+      <div class="tl-header"><div class="tl-role">Principal Project Manager</div><div class="tl-period current">2014 – Present</div></div>
+      <div class="tl-company">BankBazaar.com · A&amp;A Dukaan Financial Services Pvt. Ltd.</div><div class="tl-location">📍 Chennai, India &nbsp;|&nbsp; 🌏 Malaysia &amp; Singapore</div>
+      <ul class="tl-bullets">
+        <li>Led agile teams to successfully launch multiple fintech products: <strong>Personal Loans, Home Loans, Car Loans, Credit Cards, Mutual Funds, and Insurance</strong>.</li>
+        <li>Facilitated daily standups, sprint planning, and retrospectives ensuring efficient, on-time delivery across complex multi-track projects.</li>
+        <li>Leveraged <strong>n8n and Claude AI</strong> to automate project workflows, status reporting, and cross-team communications.</li>
+        <li>Spearheaded the expansion of loan products to <strong>international markets — Malaysia and Singapore</strong>.</li>
+        <li>Proactively identified risks early and implemented mitigation strategies to ensure timely completion.</li>
+      </ul>
+      <div class="tl-tag-row"><span class="tl-tag">Agile / Scrum</span><span class="tl-tag">Sprint Planning</span><span class="tl-tag">Stakeholder Mgmt</span><span class="tl-tag">Jira</span><span class="tl-tag">International Delivery</span><span class="tl-tag">Risk Management</span></div>
+    </div></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-card">
+      <div class="tl-header"><div class="tl-role">Senior Test Engineer</div><div class="tl-period">2012 – 2014</div></div>
+      <div class="tl-company">Stag Software Pvt. Ltd.</div><div class="tl-location">📍 Chennai, India</div>
+      <ul class="tl-bullets">
+        <li>Led weekly product release cycles for mobile and web-based fintech applications.</li>
+        <li>Conducted Root Cause Analysis (RCA) for identified bugs and contributed to QA resolution.</li>
+        <li>Acted as liaison between test team and product management for smooth rollout.</li>
+      </ul>
+      <div class="tl-tag-row"><span class="tl-tag">QA Leadership</span><span class="tl-tag">Test Planning</span><span class="tl-tag">Root Cause Analysis</span></div>
+    </div></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-card">
+      <div class="tl-header"><div class="tl-role">Test Engineer</div><div class="tl-period">2011 – 2012</div></div>
+      <div class="tl-company">Four Soft Pvt. Limited</div><div class="tl-location">📍 Hyderabad, India</div>
+      <ul class="tl-bullets">
+        <li>Contributed to testing and QA of software products, collaborating with developers and project managers.</li>
+        <li>Performed functional and regression testing; prepared test documentation.</li>
+      </ul>
+      <div class="tl-tag-row"><span class="tl-tag">Functional Testing</span><span class="tl-tag">Regression Testing</span><span class="tl-tag">Test Documentation</span></div>
+    </div></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-card">
+      <div class="tl-header"><div class="tl-role">OMCR Engineer</div><div class="tl-period">2008 – 2011</div></div>
+      <div class="tl-company">BSNL (Aster &amp; Skytel)</div><div class="tl-location">📍 India</div>
+      <ul class="tl-bullets">
+        <li>Managed and optimised network operations for BSNL, focusing on quality assurance and system monitoring.</li>
+        <li>Ensured smooth operation of telecom infrastructure and promptly resolved network issues.</li>
+      </ul>
+      <div class="tl-tag-row"><span class="tl-tag">Network Operations</span><span class="tl-tag">System Monitoring</span><span class="tl-tag">Telecom</span></div>
+    </div></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-tag reveal">03 · Key Projects</div>
+  <h2 class="section-title reveal">Signature Work</h2>
+  <div class="section-bar reveal"></div>
+  <p class="section-subtitle reveal">From building live production tools independently to pioneering AI automation — here's where ideas became real impact.</p>
+  <div class="projects-grid">
+    <div class="proj-card reveal">
+      <div class="proj-label">🛠 Full-Stack Product · Live Tool</div>
+      <div class="proj-title">BankBazaar PM Dashboard</div>
+      <div class="proj-period">Apr 2026 – Present &nbsp;|&nbsp; Internal Productivity Tool</div>
+      <div class="proj-desc">Independently conceptualised, designed, and deployed a full-stack internal PM dashboard — without engineering support — to streamline cross-functional product delivery tracking across dev, QA, and release cycles at BankBazaar.</div>
+      <div class="proj-metrics"><span class="metric-chip">🚀 Zero engineering dependency</span><span class="metric-chip">⚡ 2-min deployment pipeline</span><span class="metric-chip">📋 8-item PO Checklist</span><span class="metric-chip">🐛 Full Bug Tracker</span><span class="metric-chip">📦 Release Management</span></div>
+      <div class="proj-tech"><span class="tech-tag">React 18</span><span class="tech-tag">Supabase</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Cloudflare Pages</span><span class="tech-tag">Vite</span><span class="tech-tag">Tailwind CSS</span><span class="tech-tag">Claude AI</span></div>
+      <a href="http://bankbazaar-pm-dashboard.pages.dev" target="_blank" class="proj-link">🔗 View Live Dashboard →</a>
+    </div>
+    <div class="proj-card reveal" style="transition-delay:0.1s">
+      <div class="proj-label">🤖 AI Automation · Social Media</div>
+      <div class="proj-title">AI-Powered Social Media Content Automation</div>
+      <div class="proj-period">2025 – Present &nbsp;|&nbsp; BankBazaar.com</div>
+      <div class="proj-desc">Spearheaded an end-to-end AI-driven social media automation pipeline using Claude AI and n8n — covering ideation, creation, scheduling, and cross-platform publishing across Instagram, Facebook, LinkedIn, and Twitter/X.</div>
+      <div class="proj-metrics"><span class="metric-chip">📈 3x posting frequency</span><span class="metric-chip">💬 ~40% engagement boost</span><span class="metric-chip">⏱ ~50% less planning effort</span><span class="metric-chip">📊 Automated weekly Slack reports</span></div>
+      <div class="proj-tech"><span class="tech-tag">n8n</span><span class="tech-tag">Claude AI</span><span class="tech-tag">Instagram API</span><span class="tech-tag">LinkedIn API</span><span class="tech-tag">Slack</span></div>
+    </div>
+    <div class="proj-card reveal" style="transition-delay:0.2s">
+      <div class="proj-label">🌏 International Product Delivery</div>
+      <div class="proj-title">Fintech Product Expansion — India, Malaysia &amp; Singapore</div>
+      <div class="proj-period">2014 – Present &nbsp;|&nbsp; BankBazaar.com</div>
+      <div class="proj-desc">Led end-to-end delivery of multiple fintech products across geographies — from requirements gathering and sprint management to launch and post-production support across 3 countries.</div>
+      <div class="proj-metrics"><span class="metric-chip">🌍 3 countries</span><span class="metric-chip">📦 6+ products launched</span><span class="metric-chip">✅ On-time delivery record</span></div>
+      <div class="proj-tech"><span class="tech-tag">Agile / Scrum</span><span class="tech-tag">Jira</span><span class="tech-tag">Confluence</span><span class="tech-tag">Smartsheet</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-tag reveal">04 · Skills &amp; Tools</div>
+  <h2 class="section-title reveal">What I Bring to the Table</h2>
+  <div class="section-bar reveal"></div>
+  <div class="skills-grid">
+    <div class="skill-group reveal"><div class="skill-group-icon">🏃</div><div class="skill-group-name">Agile &amp; Project Management</div><div class="skill-pill-row"><span class="skill-pill">Scrum Master</span><span class="skill-pill">Sprint Planning</span><span class="skill-pill">Retrospectives</span><span class="skill-pill">Backlog Grooming</span><span class="skill-pill">Roadmap Management</span><span class="skill-pill">Risk Mitigation</span><span class="skill-pill">Stakeholder Mgmt</span></div></div>
+    <div class="skill-group reveal" style="transition-delay:0.1s"><div class="skill-group-icon">🤖</div><div class="skill-group-name">AI &amp; Automation</div><div class="skill-pill-row"><span class="skill-pill">n8n Workflow Automation</span><span class="skill-pill">Claude AI</span><span class="skill-pill">Prompt Engineering</span><span class="skill-pill">Content Pipeline Automation</span><span class="skill-pill">API Integration</span></div></div>
+    <div class="skill-group reveal" style="transition-delay:0.15s"><div class="skill-group-icon">🛠</div><div class="skill-group-name">PM &amp; Bug Tracking Tools</div><div class="skill-pill-row"><span class="skill-pill">Jira</span><span class="skill-pill">Bugzilla</span><span class="skill-pill">YouTrack</span><span class="skill-pill">Fresh Service</span><span class="skill-pill">Smartsheet</span><span class="skill-pill">Confluence</span><span class="skill-pill">MS SharePoint</span></div></div>
+    <div class="skill-group reveal" style="transition-delay:0.2s"><div class="skill-group-icon">📱</div><div class="skill-group-name">Social Media Strategy</div><div class="skill-pill-row"><span class="skill-pill">Content Planning</span><span class="skill-pill">Monthly Calendars</span><span class="skill-pill">Instagram</span><span class="skill-pill">Facebook</span><span class="skill-pill">LinkedIn</span><span class="skill-pill">Twitter / X</span><span class="skill-pill">Community Mgmt</span><span class="skill-pill">Analytics</span></div></div>
+    <div class="skill-group reveal" style="transition-delay:0.25s"><div class="skill-group-icon">💻</div><div class="skill-group-name">Tech &amp; Collaboration</div><div class="skill-pill-row"><span class="skill-pill">React 18</span><span class="skill-pill">Supabase / PostgreSQL</span><span class="skill-pill">Cloudflare Pages</span><span class="skill-pill">Slack</span><span class="skill-pill">Microsoft Office 365</span><span class="skill-pill">Linux</span><span class="skill-pill">Windows</span></div></div>
+    <div class="skill-group reveal" style="transition-delay:0.3s"><div class="skill-group-icon">🌟</div><div class="skill-group-name">Leadership &amp; Soft Skills</div><div class="skill-pill-row"><span class="skill-pill">Cross-functional Leadership</span><span class="skill-pill">Process Improvement</span><span class="skill-pill">International Delivery</span><span class="skill-pill">Conflict Resolution</span><span class="skill-pill">Mentoring</span><span class="skill-pill">Strategic Thinking</span></div></div>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="section-tag reveal">05 · Achievements &amp; More</div>
+  <h2 class="section-title reveal">Recognition &amp; Background</h2>
+  <div class="section-bar reveal"></div>
+  <div class="ach-grid">
+    <div class="ach-card reveal"><div class="ach-icon">🏆</div><div class="ach-title">Excellence Performance Award</div><div class="ach-desc">Received BankBazaar's prestigious <strong>Excellence Award</strong> for outstanding contribution to a key mobile-app-related project — recognising exceptional delivery, leadership, and impact.</div></div>
+    <div class="ach-card reveal" style="transition-delay:0.1s"><div class="ach-icon">🛠</div><div class="ach-title">Shipped Live Software Independently</div><div class="ach-desc">Independently built and deployed a full-stack <strong>PM Dashboard</strong> used daily by the team — proving that PMs can ship real production software using AI-assisted development.</div></div>
+    <div class="ach-card reveal" style="transition-delay:0.15s"><div class="ach-icon">🌏</div><div class="ach-title">International Market Expansion</div><div class="ach-desc">Spearheaded the successful expansion of BankBazaar's loan products to <strong>Malaysia and Singapore</strong>, navigating multi-geography delivery complexities.</div></div>
+    <div class="ach-card reveal" style="transition-delay:0.2s"><div class="ach-icon">📈</div><div class="ach-title">40% Engagement Boost via AI</div><div class="ach-desc">Drove a <strong>~40% increase in audience engagement</strong> and 3x posting frequency through AI-powered social media automation — from zero to fully automated pipeline.</div></div>
+  </div>
+  <div style="margin-top:3.5rem;">
+    <div class="section-tag reveal" style="margin-bottom:0.5rem;">Education</div>
+    <div class="tl-card reveal" style="max-width:600px;">
+      <div class="tl-header"><div class="tl-role">🎓 Bachelor of Engineering — Electronics &amp; Communication</div><div class="tl-period">1999 – 2003</div></div>
+      <div class="tl-company">Jawaharlal Nehru Technological University (JNTU)</div>
+      <div class="tl-location">📍 Visakhapatnam, India</div>
+    </div>
+  </div>
+  <div style="margin-top:3rem;">
+    <div class="section-tag reveal" style="margin-bottom:0.5rem;">Languages</div>
+    <div class="lang-row reveal">
+      <div class="lang-card"><div class="lang-flag">🗣</div><div><div class="lang-name">Telugu</div><div class="lang-level">Native</div></div></div>
+      <div class="lang-card"><div class="lang-flag">🗣</div><div><div class="lang-name">Hindi</div><div class="lang-level">Fluent</div></div></div>
+      <div class="lang-card"><div class="lang-flag">🗣</div><div><div class="lang-name">English</div><div class="lang-level">Conversational</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-tag">06 · Contact</div>
+  <h2 class="section-title">Let's Work Together</h2>
+  <div class="section-bar"></div>
+  <p class="section-subtitle">Whether it's an exciting project opportunity, a collaboration, or just a professional hello — I'd love to connect. Reach out and let's make something great together.</p>
+  <div class="contact-links">
+    <a href="mailto:sridevi.kondaveti049@gmail.com" class="contact-btn"><span>✉</span> sridevi.kondaveti049@gmail.com</a>
+    <a href="tel:+918190900617" class="contact-btn"><span>📞</span> +91 81909 00617</a>
+    <a href="https://linkedin.com/in/sridevi-kondaveti-1925753b4" target="_blank" class="contact-btn"><span>💼</span> LinkedIn Profile</a>
+    <a href="http://bankbazaar-pm-dashboard.pages.dev" target="_blank" class="contact-btn"><span>🚀</span> Live PM Dashboard</a>
+  </div>
+  <a href="mailto:sridevi.kondaveti049@gmail.com" class="btn-gold" style="font-size:0.95rem;padding:15px 36px;">✉ Send Me a Message</a>
+</section>
+
+<footer><p>Crafted with passion for <strong>Sridevi K</strong> · Principal PM · Scrum Master · Social Media Strategist · Chennai, India · © 2026</p></footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => io.observe(el));
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.background = window.scrollY > 50 ? 'rgba(6,14,28,0.98)' : 'rgba(11,31,58,0.96)';
+  });
+</script>
+</body>
+</html>
